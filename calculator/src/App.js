@@ -1,12 +1,16 @@
 import './App.css';
-import Button from 'react-bootstrap/Button';
-
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Calculator from '../src/components/Calculator'
 function App() {
   return (
-    <div className="App">
-           <Button variant="primary">Primary</Button>{' '}
+    <Container>
 
-    </div>
+      <Row>
+        <Col><Calculator/></Col>
+      </Row>
+    </Container>
   );
 }
 
