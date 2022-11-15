@@ -5,10 +5,14 @@ import { useState } from 'react';
 import ButtonTemplate from './ButtonTemplate'
 export default function Calculator() {
     const [result, setResult] = useState("0");
-
+    const [varible, setVarible] = useState({
+        value1 : 0,
+        value2 : 0
+    })
     // function to handle calculations
     function handelCalculation(e){
         
+        setResult(result + e)
         
     }
 
@@ -49,7 +53,7 @@ export default function Calculator() {
       <Row>
         {buttonsList.map((myButton, index) => (
             <Col xs>
-            <ButtonTemplate setResult={setResult} buttonValue={Object.keys(myButton)} buttonVariant={Object.values(myButton)}/>
+             <ButtonTemplate setResult={handelCalculation} buttonValue={Object.keys(myButton)} buttonVariant={Object.values(myButton)}/>
             </Col>
         ))}
       </Row>
