@@ -90,7 +90,7 @@ export default function Calculator() {
    <div style={{ maxInlineSize: "22rem", borderRadius: "10px", overflow: "hidden" }}>
    {/* output  */}
       <Row>
-        <h1 style={{ fontSize: "2rem"}} className="text-align-end">{result}</h1>
+        <h1 style={{ fontSize: "2rem", backgroundColor: "gray"}} className="text-align-end">{result}</h1>
       </Row>
       {/* buttons */}
       <Row>
