@@ -1,43 +1,50 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useState } from 'react';
 import ButtonTemplate from './ButtonTemplate'
 export default function Calculator() {
     const [result, setResult] = useState("0");
-    const [operationState, setOperationState] = useState(true)
+    const [operationState, setOperationState] = useState(false)
     // function to handle calculations
     function handelCalculation(userValue){
         switch(userValue){
             case "+":
-                if(operationState){
+                if(operationState === false){
                     setResult(result + userValue)
-                    setOperationState(false)
+                    setOperationState(userValue)
                 }
                 break;
+
             case "-":
-                if(operationState){
+                if(operationState === false){
                     setResult(result + userValue)
-                    setOperationState(false)
+                    setOperationState(userValue)
                 }
                 break;
+
             case "÷":
-                if(operationState){
+                if(operationState === false){
                     setResult(result + userValue)
-                    setOperationState(false)
+                    setOperationState(userValue)
                 }
                 break;
-            case ".":
-                if(operationState){
+
+            case "*":
+                if(operationState === false){
                     setResult(result + userValue)
-                    setOperationState(false)
+                    setOperationState(userValue)
                 }
                 break;
+
             case "AC":
-                setOperationState(true)
+                setOperationState(false)
                 setResult("0")
                 break;
+
             case "=":
+                const varibles = result.split(operationState).map((e) => e === '' ? "0" : e)
+                setResult(initiateCalculation(varibles[0], varibles[1]))
                 break;
             default:
                 setResult(result + userValue)
@@ -45,12 +52,19 @@ export default function Calculator() {
         
     }
 
-    useEffect(() => {
+    function initiateCalculation(value1, value2){
 
-        console.log(result)
-
-    },[result])
-
+        switch(operationState){
+            case "+":
+                return Number(value1) + Number(value2)
+            case "-":
+                return Number(value1)- Number(value2)
+            case "÷":
+                return Number(value1) / Number(value2)
+            case "*":
+                return Number(value1) * Number(value2)
+        }
+    }
     // store all buttons
     const buttonsList = [
     {"1":"primary"},
@@ -66,7 +80,7 @@ export default function Calculator() {
     {"+":"info"},
     {"-":"info"},
     {"÷":"info"},
-    {".": "info"},
+    {"*": "info"},
     {"AC":"warning"},
     {"=": "success"}
     ]
