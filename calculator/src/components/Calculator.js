@@ -1,9 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
+import { useState } from 'react';
 import ButtonTemplate from './ButtonTemplate'
 export default function Calculator() {
+    const [result, setResult] = useState("0");
+
+    // function to handle calculations
+    function handelCalculation(e){
+        
+        
+    }
+
+    useEffect(() => {
+
+        console.log(result)
+
+    },[result])
+
+    // store all buttons
     const buttonsList = [
     {"1":"primary"},
     {"2":"primary"},
@@ -28,13 +43,13 @@ export default function Calculator() {
    <div style={{ maxInlineSize: "22rem", borderRadius: "10px", overflow: "hidden" }}>
    {/* output  */}
       <Row>
-        <h1 style={{ fontSize: "2rem"}} className="text-align-end">Result</h1>
+        <h1 style={{ fontSize: "2rem"}} className="text-align-end">{result}</h1>
       </Row>
       {/* buttons */}
       <Row>
         {buttonsList.map((myButton, index) => (
             <Col xs>
-            <ButtonTemplate buttonValue={Object.keys(myButton)} buttonVariant={Object.values(myButton)}/>
+            <ButtonTemplate setResult={setResult} buttonValue={Object.keys(myButton)} buttonVariant={Object.values(myButton)}/>
             </Col>
         ))}
       </Row>
