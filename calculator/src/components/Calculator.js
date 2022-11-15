@@ -6,11 +6,6 @@ import ButtonTemplate from './ButtonTemplate'
 export default function Calculator() {
     const [result, setResult] = useState("0");
     const [operationState, setOperationState] = useState(true)
-    const varibleCalculation = {
-        value1 : 0,
-        value2 : 0,
-        operator: ""
-    }
     // function to handle calculations
     function handelCalculation(userValue){
         switch(userValue){
@@ -39,10 +34,7 @@ export default function Calculator() {
                 }
                 break;
             case "AC":
-                if(operationState){
-                    setResult(result + userValue)
-                    setOperationState(false)
-                }
+                setOperationState(true)
                 setResult("0")
                 break;
             case "=":
