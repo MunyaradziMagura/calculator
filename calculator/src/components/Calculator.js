@@ -5,14 +5,51 @@ import { useState } from 'react';
 import ButtonTemplate from './ButtonTemplate'
 export default function Calculator() {
     const [result, setResult] = useState("0");
-    const [varible, setVarible] = useState({
+    const [operationState, setOperationState] = useState(true)
+    const varibleCalculation = {
         value1 : 0,
-        value2 : 0
-    })
+        value2 : 0,
+        operator: ""
+    }
     // function to handle calculations
-    function handelCalculation(e){
-        
-        setResult(result + e)
+    function handelCalculation(userValue){
+        switch(userValue){
+            case "+":
+                if(operationState){
+                    setResult(result + userValue)
+                    setOperationState(false)
+                }
+                break;
+            case "-":
+                if(operationState){
+                    setResult(result + userValue)
+                    setOperationState(false)
+                }
+                break;
+            case "÷":
+                if(operationState){
+                    setResult(result + userValue)
+                    setOperationState(false)
+                }
+                break;
+            case ".":
+                if(operationState){
+                    setResult(result + userValue)
+                    setOperationState(false)
+                }
+                break;
+            case "AC":
+                if(operationState){
+                    setResult(result + userValue)
+                    setOperationState(false)
+                }
+                setResult("0")
+                break;
+            case "=":
+                break;
+            default:
+                setResult(result + userValue)
+        }
         
     }
 
